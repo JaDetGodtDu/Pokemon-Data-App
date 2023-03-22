@@ -1,5 +1,5 @@
 :root {
-  --green: rgb(38, 76, 89);
+  --red: rgb(238, 95, 85);
   --light-green: rgb(172, 198, 201);
   --light-grey: #f1f1f4;
   --text-color-light: #f1f1f1;
@@ -28,6 +28,20 @@ main {
   background: var(--light-grey);
   animation: fadeIn 0.4s;
   padding: 137px 0 0;
+}
+header {
+  background-color: var(--red);
+  padding: 0.1em;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+}
+footer {
+  background-color: var(--red);
+  color: var(--text-color-light);
+  padding: 1.5em;
+  text-align: center;
 }
 .grid-container {
   display: grid;
