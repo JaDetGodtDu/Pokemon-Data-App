@@ -2,14 +2,6 @@
 
 console.log("Javascript is running");
 
-window.addEventListener("load", initApp);
-
-function initApp() {}
-
-function fetchJSON() {}
-
-function showPokemon() {}
-
 const porygon = {
   image: "https://assets.pokemon.com/assets/cms2/img/pokedex/full/137.png",
   name: "Porygon",
@@ -32,10 +24,45 @@ const porygon = {
   subtype: "",
   spilversion: "" /* ??? */,
 };
-function viewPokemon(pokemon) {
-  const myHTML = /*html*/ `
+
+window.addEventListener("load", initApp);
+
+function initApp() {
+  console.log("initApp");
+  showPokemon(porygon);
+}
+
+function fetchJSON() {}
+
+function showPokemon(pokemon) {
+  console.log("showPokemon");
+
+  let myHTML = /*HTML*/ `
+  <article>
+    <tbody>
+      <tr>
+        <td><img src=${pokemon.image}></td><br>
+        <td><b>Name:</b> ${pokemon.name}</td><br>
+        <td><b>Pokédex index:</b> ${pokemon.dexindex}</td>
+      </tr>
+    </tbody>
+  </article>   
+`;
+
+  document
+    .querySelector("#pokemon-view")
+    .insertAdjacentHTML("beforeend", myHTML);
+  document
+    .querySelector("#pokemon-view article:last-child")
+    .addEventListener("click", pokemonClicked);
+
+  function pokemonClicked() {
+    console.log("pokemonClicked");
+    console.log(pokemon);
+
+    let pokemonInfo = /*html*/ ` 
+    <article id=pokemon-info-list>
         <img src=${pokemon.image}>
-        <dialog open>
         <li><b>Name:</b> ${pokemon.name}</li>
         <li><b>Description:</b> ${pokemon.description}</li>
         <li><b>Pokédex index:</b> ${pokemon.dexindex}</li>
@@ -51,11 +78,22 @@ function viewPokemon(pokemon) {
         <li><b>Special Attack:</b> ${pokemon.statsSpecialAttack}</li>
         <li><b>Special Defence:</b> ${pokemon.statsSpecialDefence}</li>
         <li><b>Speed:</b> ${pokemon.statsSpeed}</li>
-        </dialog>
+        <button id="detail-view-btn">Close</button>
+     </article>   
     `;
 
-  document
-    .querySelector("#pokemonDetailView")
-    .insertAdjacentHTML("beforeend", myHTML);
+    document
+      .querySelector("#pokemon-detail-view")
+      .insertAdjacentHTML("beforeend", pokemonInfo);
+
+    document.querySelector("#pokemon-detail-view").showModal(pokemon);
+    document
+      .querySelector("#detail-view-btn")
+      .addEventListener("click", closeDialog);
+  }
 }
-viewPokemon(porygon);
+function closeDialog() {
+  console.log("closeDialog");
+  document.querySelector("#pokemon-detail-view").close();
+  document.querySelector("#pokemon-info-list").remove();
+}
