@@ -2,6 +2,14 @@
 
 console.log("Javascript is running");
 
+window.addEventListener("load", initApp);
+
+function initApp() {}
+
+function fetchJSON() {}
+
+function showPokemon() {}
+
 const porygon = {
   image: "https://assets.pokemon.com/assets/cms2/img/pokedex/full/137.png",
   name: "Porygon",
@@ -24,13 +32,13 @@ const porygon = {
   subtype: "",
   spilversion: "" /* ??? */,
 };
-
-function detailView(pokemon) {
+function viewPokemon(pokemon) {
   const myHTML = /*html*/ `
         <img src=${pokemon.image}>
+        <dialog open>
         <li><b>Name:</b> ${pokemon.name}</li>
         <li><b>Description:</b> ${pokemon.description}</li>
-        <li><b>Dexindex:</b> ${pokemon.dexindex}</li>
+        <li><b>Pokédex index:</b> ${pokemon.dexindex}</li>
         <li><b>Type:</b> ${pokemon.type}</li>
         <li><b>Gender:</b> ${pokemon.gender}</li>
         <li><b>Weight:</b> ${pokemon.weight}</li>
@@ -43,9 +51,11 @@ function detailView(pokemon) {
         <li><b>Special Attack:</b> ${pokemon.statsSpecialAttack}</li>
         <li><b>Special Defence:</b> ${pokemon.statsSpecialDefence}</li>
         <li><b>Speed:</b> ${pokemon.statsSpeed}</li>
+        </dialog>
     `;
 
   document
     .querySelector("#pokemonDetailView")
     .insertAdjacentHTML("beforeend", myHTML);
 }
+viewPokemon(porygon);
