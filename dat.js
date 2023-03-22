@@ -42,8 +42,8 @@ function showPokemon(pokemon) {
     <tbody>
       <tr>
         <td><img src=${pokemon.image}></td><br>
-        <td><b>Name:</b> ${pokemon.name}</td><br>
-        <td><b>Pokédex index:</b> ${pokemon.dexindex}</td>
+        <td><b>Name:</b> ${pokemon.name}</td>
+        <td><b>Index:</b> ${pokemon.dexindex}</td>
       </tr>
     </tbody>
   </article>   
