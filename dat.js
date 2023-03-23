@@ -2,37 +2,16 @@
 
 console.log("Javascript is running");
 
-const porygon = {
-  image: "https://assets.pokemon.com/assets/cms2/img/pokedex/full/137.png",
-  name: "Porygon",
-  description:
-    "State-of-the-art technology was used to create Porygon. It was the first artificial Pokémon to be created via computer programming.",
-  dexindex: 137 /* ??? */,
-  type: "Normal",
-  gender: "Unknown",
-  weight: 36514 /* In grams obv */,
-  height: 78.7 /* In cm obv */,
-  generation: 1,
-  canEvolve: true,
-  statsHP: 65,
-  statsAttack: 60,
-  statsDefence: 70,
-  statsSpecialAttack: 85,
-  statsSpecialDefence: 75,
-  statsSpeed: 40,
-  footprint: "" /* If it exists */,
-  subtype: "",
-  spilversion: "" /* ??? */,
-};
-
 window.addEventListener("load", initApp);
 
-function initApp() {
+async function initApp() {
   console.log("initApp");
+  const porygon = await fetchJSON("data/porygon.json");
   showPokemon(porygon);
 }
 
 async function fetchJSON(url) {
+  console.log("JSON being fetched");
   const response = await fetch(url);
   const data = await response.json();
   return data;
