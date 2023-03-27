@@ -6,8 +6,20 @@ window.addEventListener("load", initApp);
 
 async function initApp() {
   console.log("initApp");
-  const porygon = await fetchJSON("data/porygon.json");
+  const porygon = await fetchJSON(
+    "https://raw.githubusercontent.com/JaDetGodtDu/Pokemon-Data-App/main/data/porygon.json"
+  );
   showPokemon(porygon);
+
+  const mew = await fetchJSON(
+    "https://raw.githubusercontent.com/Adelkilde/Data-Pokemon/main/mew.json"
+  );
+  showPokemon(mew);
+
+  const bulbasaur = await fetchJSON(
+    "https://raw.githubusercontent.com/tora0001/pokemon-data/main/data/pokemon.json"
+  );
+  showPokemon(bulbasaur);
 }
 
 async function fetchJSON(url) {
@@ -22,13 +34,9 @@ function showPokemon(pokemon) {
 
   let myHTML = /*HTML*/ `
   <article>
-    <tbody>
-      <tr>
-        <td><img src=${pokemon.image}></td><br>
-        <td><b>Name:</b> ${pokemon.name}</td>
-        <td><b>Index:</b> ${pokemon.dexindex}</td>
-      </tr>
-    </tbody>
+        <img src=${pokemon.image}><br>
+        <b>Name:</b> ${pokemon.name}
+        <b>Index:</b> ${pokemon.dexindex}
   </article>   
 `;
 
