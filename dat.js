@@ -6,8 +6,11 @@ window.addEventListener("load", initApp);
 
 async function initApp() {
   console.log("initApp");
-  const pokemonPlural = await fetchJSON();
-  pokemonPlural.forEach(showPokemon);
+  const pokemonDataFetch = await fetchJSON();
+  /* pokemonPlural.forEach(showPokemon); */
+  for (let pokemonInfo of pokemonDataFetch) {
+    showPokemon(pokemonInfo);
+  }
 }
 
 async function fetchJSON() {
