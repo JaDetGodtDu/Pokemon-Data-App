@@ -17,5 +17,6 @@
   "statsSpeed": 40,
   "footprint": "",
   "subtype": "",
-  "spilversion": ""
+  "spilversion": "",
+  "ability": "Trace, Download"
 }
