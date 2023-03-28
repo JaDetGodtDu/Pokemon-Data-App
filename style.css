@@ -2,14 +2,14 @@
   --red: rgb(238, 95, 85);
   --dark-red: rgb(155, 56, 49);
   --grey: #f1f1f4;
-  --text-color-dark: #333;
+  --text-dark: #333;
   --white: #f2f2f2;
   --font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS",
     sans-serif;
 }
 
 html {
-  color: var(--text-color-dark);
+  color: var(--text-dark);
   font-family: var(--font-family);
   height: 100%;
   width: 100%;
@@ -70,7 +70,6 @@ footer {
     grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
   }
 }
-
 .grid-container > article {
   box-shadow: 1px 1px 8px rgba(0, 0, 0, 0.25);
   padding: 2.5em;
@@ -86,6 +85,9 @@ footer {
   width: 100%;
   height: 100%;
   object-fit: contain;
+}
+.dialog-container {
+  max-width: 50vw;
 }
 .dialog-container > article {
   box-shadow: 1px 1px 8px rgba(0, 0, 0, 0.25);
@@ -114,4 +116,7 @@ footer {
   100% {
     opacity: 1;
   }
+}
+#footprint {
+  scale: 15%;
 }
