@@ -23,10 +23,10 @@ function showPokemon(pokemon) {
   console.log("showPokemon");
 
   let myHTML = /*HTML*/ `
-  <article >
+  <article id=poke-container>
         <img src=${pokemon.image}>
-        <p><b>Name:</b> ${pokemon.name}</p>
-        <p><b>Index:</b> ${pokemon.dexindex}</p>
+        <b>Name:</b> ${pokemon.name}<br>
+        <b>Index:</b> ${pokemon.dexindex}
   </article>   
 `;
 
