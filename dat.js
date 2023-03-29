@@ -74,6 +74,7 @@ function showPokemon(pokemon) {
       .insertAdjacentHTML("beforeend", pokemonInfo);
 
     document.querySelector("#pokemon-detail-view").showModal(pokemon);
+    document.querySelector("#pokemon-detail-view").scrollTop = 0;
     document
       .querySelector("#detail-view-btn")
       .addEventListener("click", closeDialog);
