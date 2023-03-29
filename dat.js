@@ -42,7 +42,6 @@ function showPokemon(pokemon) {
 
   function pokemonClicked() {
     console.log("pokemonClicked");
-    console.log(pokemon);
 
     let pokemonInfo = /*html*/ ` 
     <article id=pokemon-info-list>
@@ -51,12 +50,12 @@ function showPokemon(pokemon) {
         <li><b>Description:</b> ${pokemon.description}</li>
         <li><b>Pokédex index:</b> ${pokemon.dexindex}</li>
         <li><b>Type:</b> ${pokemon.type}</li>
-        <li><b>Subtype: </b>${pokemon.subtype}</li>
+        <li>${subType(pokemon)}</li>
         <li><b>Gender:</b> ${pokemon.gender}</li>
-        <li><b>Weight:</b> ${pokemon.weight}</li>
-        <li><b>Height:</b> ${pokemon.height}</li>
+        <li><b>Weight:</b> ${pokemon.weight}g</li>
+        <li><b>Height:</b> ${pokemon.height}cm</li>
         <li><b>Generation:</b> ${pokemon.generation}</li>
-        <li><b>Can evolve:</b> ${pokemon.canEvolve}</li>
+        <li>${canItEvolve(pokemon)}</li>
         <li><b>Ability: </b>${pokemon.ability}</li>
         <li><b>HP:</b> ${pokemon.statsHP}</li>
         <li><b>Attack:</b> ${pokemon.statsAttack}</li>
@@ -64,6 +63,7 @@ function showPokemon(pokemon) {
         <li><b>Special Attack:</b> ${pokemon.statsSpecialAttack}</li>
         <li><b>Special Defence:</b> ${pokemon.statsSpecialDefence}</li>
         <li><b>Speed:</b> ${pokemon.statsSpeed}</li>
+        <li><b>Weaknesses:</b> ${pokemon.weaknesses}</li>
         <img id=footprint src=${pokemon.footprint}><br>
         <button id="detail-view-btn">Close</button>
      </article>   
@@ -79,6 +79,42 @@ function showPokemon(pokemon) {
       .addEventListener("click", closeDialog);
   }
 }
+
+function canItEvolve(pokemon) {
+  console.log("canItEvolve");
+  console.log(pokemon);
+  let HTML = "";
+  if (pokemon.canEvolve === false) {
+    HTML = /*html*/ `
+        <b>Can evolve:</b> No, it can't evolve.
+    `;
+  } else {
+    HTML = /*html*/ `
+        <b>Can evolve:</b> Yes, it can evolve.
+    `;
+  }
+  return HTML;
+}
+function subType(pokemon) {
+  console.log("subType");
+  console.log(pokemon);
+  let HTML = "";
+  if (
+    pokemon.subtype === "" ||
+    pokemon.subtype === false ||
+    pokemon.subtype === undefined
+  ) {
+    HTML = /*html*/ `
+        <b>Subtype:</b> None
+    `;
+  } else {
+    HTML = /*html*/ `
+        <b>Subtype:</b> ${pokemon.subtype}.
+    `;
+  }
+  return HTML;
+}
+
 function closeDialog() {
   console.log("closeDialog");
   document.querySelector("#pokemon-detail-view").close();

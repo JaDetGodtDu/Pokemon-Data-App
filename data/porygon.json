@@ -18,5 +18,6 @@
   "footprint": "https://archives.bulbagarden.net/media/upload/d/d4/F0137.png",
   "subtype": "None",
   "spilversion": "",
-  "ability": "Trace, Download"
+  "ability": "Trace, Download",
+  "weaknesses": "Fighting"
 }
