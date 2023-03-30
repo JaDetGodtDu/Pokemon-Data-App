@@ -12,7 +12,6 @@ async function initApp() {
     showPokemon(pokemonInfo);
   }
 }
-
 async function fetchJSON() {
   console.log("JSON being fetched");
   const response = await fetch(
@@ -22,6 +21,7 @@ async function fetchJSON() {
   return data;
 }
 
+/* Function that inserts to fetched JSON data into the grid */
 function showPokemon(pokemon) {
   console.log("showPokemon");
 
@@ -40,6 +40,7 @@ function showPokemon(pokemon) {
     .querySelector("#pokemon-view article:last-child")
     .addEventListener("click", pokemonClicked);
 
+  /* Nested function that fires when you click an item in the grid */
   function pokemonClicked() {
     console.log("pokemonClicked");
 
@@ -69,18 +70,23 @@ function showPokemon(pokemon) {
      </article>   
     `;
 
+    /* Inserts HTML into the detail-view */
     document
       .querySelector("#pokemon-detail-view")
       .insertAdjacentHTML("beforeend", pokemonInfo);
 
+    /* Opens the detail-view in a modal window and scrolls to top of said window */
     document.querySelector("#pokemon-detail-view").showModal(pokemon);
     document.querySelector("#pokemon-detail-view").scrollTop = 0;
+
+    /* Listens for click on the close button in the modal window */
     document
       .querySelector("#detail-view-btn")
       .addEventListener("click", closeDialog);
   }
 }
 
+/* If / else - functions to give explanatory outputs, instead of true/false or null/undefined */
 function canItEvolve(pokemon) {
   console.log("canItEvolve");
   console.log(pokemon);
@@ -116,6 +122,7 @@ function subType(pokemon) {
   return HTML;
 }
 
+/* Function to close the detail-view and remove existing HTML, so it doesn't "stack" itself */
 function closeDialog() {
   console.log("closeDialog");
   document.querySelector("#pokemon-detail-view").close();
