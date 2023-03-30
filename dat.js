@@ -109,14 +109,16 @@ function subType(pokemon) {
   if (
     pokemon.subtype === "" ||
     pokemon.subtype === false ||
-    pokemon.subtype === undefined
+    pokemon.subtype === undefined ||
+    pokemon.subtype === null ||
+    pokemon.subtype === "undefined"
   ) {
     HTML = /*html*/ `
         <b>Subtype:</b> None
     `;
   } else {
     HTML = /*html*/ `
-        <b>Subtype:</b> ${pokemon.subtype}.
+        <b>Subtype:</b> ${pokemon.subtype}
     `;
   }
   return HTML;
