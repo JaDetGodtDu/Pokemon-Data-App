@@ -67,7 +67,7 @@ function showPokemon(pokemon) {
         <li><b>Special Defence:</b> ${pokemon.statsSpecialDefence}</li>
         <li><b>Speed:</b> ${pokemon.statsSpeed}</li>
         <li><b>Weaknesses:</b> ${pokemon.weaknesses}</li>
-        <img id=footprint src=${pokemon.footprint}><br>
+        ${footprint(pokemon)}
         <button id="detail-view-btn">Close</button>
      </article>   
     `;
@@ -88,10 +88,8 @@ function showPokemon(pokemon) {
   }
 }
 
-/* If / else - functions to give explanatory outputs, instead of true/false or null/undefined */
+/* If / else - functions to give explanatory outputs, instead of true/false, null/undefined etc. or completely remove the output */
 function canItEvolve(pokemon) {
-  console.log("canItEvolve");
-  console.log(pokemon);
   let HTML = "";
   if (pokemon.canEvolve === false) {
     HTML = /*html*/ `
@@ -105,15 +103,14 @@ function canItEvolve(pokemon) {
   return HTML;
 }
 function subType(pokemon) {
-  console.log("subType");
-  console.log(pokemon);
   let HTML = "";
   if (
     pokemon.subtype === "" ||
     pokemon.subtype === false ||
     pokemon.subtype === undefined ||
     pokemon.subtype === null ||
-    pokemon.subtype === "undefined"
+    pokemon.subtype === "undefined" ||
+    pokemon.subtype === "N/A"
   ) {
     HTML = /*html*/ `
         <b>Subtype:</b> None
@@ -122,6 +119,20 @@ function subType(pokemon) {
     HTML = /*html*/ `
         <b>Subtype:</b> ${pokemon.subtype}
     `;
+  }
+  return HTML;
+}
+function footprint(pokemon) {
+  console.log("footprint");
+  console.log(pokemon);
+  let HTML = "";
+  if (
+    pokemon.footprint === undefined ||
+    pokemon.footprint === null ||
+    pokemon.footprint === "undefined"
+  ) {
+  } else {
+    HTML = /*HTML*/ `<img id=footprint src=${pokemon.footprint}><br></br>`;
   }
   return HTML;
 }
