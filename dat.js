@@ -36,6 +36,8 @@ function showPokemon(pokemon) {
   document
     .querySelector("#pokemon-view")
     .insertAdjacentHTML("beforeend", myHTML);
+
+  /* Listens for clicks on items in the grid */
   document
     .querySelector("#pokemon-view article:last-child")
     .addEventListener("click", pokemonClicked);
